@@ -39,10 +39,10 @@ class _StartState extends State<Start> {
               onPressed: () {
                 NavigationService.instance.pushNamed(
                   context,
-                  Routes.demoScreen,
+                  Routes.fileUpload,
                 );
               },
-              child: Text("notification"),
+              child: Text("file upload"),
             ),
           ),
         ],
