@@ -33,6 +33,18 @@ class _StartState extends State<Start> {
               child: Text("notification"),
             ),
           ),
+          Container(
+            padding: EdgeInsets.all(16),
+            child: RaisedButton(
+              onPressed: () {
+                NavigationService.instance.pushNamed(
+                  context,
+                  Routes.demoScreen,
+                );
+              },
+              child: Text("notification"),
+            ),
+          ),
         ],
       ),
     );
