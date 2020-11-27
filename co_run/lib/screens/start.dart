@@ -30,7 +30,7 @@ class _StartState extends State<Start> {
                   Routes.demoScreen,
                 );
               },
-              child: Text("notification"),
+              child: Text("Demo screen"),
             ),
           ),
         ],
