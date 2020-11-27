@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "735541355578",
+    "firebase_url": "https://corun-a6f0d.firebaseio.com",
+    "project_id": "corun-a6f0d",
+    "storage_bucket": "corun-a6f0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735541355578:android:bc9c88fb228a482cc1c103",
+        "android_client_info": {
+          "package_name": "com.example.co_run"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735541355578-ufucsdsinh2k4ica5bnuerlv67ou8mvj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp4dFml5W8XQO7f-avtIHShGSezDBDiPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735541355578-ufucsdsinh2k4ica5bnuerlv67ou8mvj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
