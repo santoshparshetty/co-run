@@ -12,7 +12,7 @@ class MyRouter {
         return MaterialPageRoute(builder: (_) => Start());
       case Routes.demoScreen:
         return MaterialPageRoute(builder: (_) => DemoScreen());
-      case Routes.fileUpload:
+      case Routes.personalDetails:
         return MaterialPageRoute(builder: (_) => PersonalDetails());
 
       default:

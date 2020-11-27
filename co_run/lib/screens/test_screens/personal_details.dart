@@ -38,14 +38,12 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          Text(
-            "Enter personal details ",
-            style: MyTheme.h6(
-                themeColor: MyColor.defaultColor,
-                fontWeight: FontWeight.normal),
-          ),
-        ],
+        centerTitle: true,
+        title: Text('Enter personal details',
+        style:MyTheme.h6(
+              themeColor: Colors.white,
+              fontWeight: FontWeight.normal),
+        ),
       ),
       body: SingleChildScrollView(
         child: Form(
