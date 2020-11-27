@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 class UploadAdhaar extends StatefulWidget {
   final String userID;
   final String iconName;
+  final Function isFileUploaded;
 
-  UploadAdhaar({this.userID = 'abcd1234',this.iconName='Upload adhaar',});
+  UploadAdhaar({this.userID = 'abcd1234',this.iconName='Upload adhaar',this.isFileUploaded});
 
   @override
   _UploadAdhaarState createState() => _UploadAdhaarState();
@@ -37,14 +38,12 @@ class _UploadAdhaarState extends State<UploadAdhaar> {
                 fileName: widget.userID + '.pdf',
                 file: file,
               );
+              widget.isFileUploaded(file);
               // TODO 1 : Upload to firebase here
             }
           },
         );
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => DisplayNotes(file: file,)),
-        );
+
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
