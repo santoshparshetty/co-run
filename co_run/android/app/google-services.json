@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "587212805821",
+    "firebase_url": "https://co-run.firebaseio.com",
+    "project_id": "co-run",
+    "storage_bucket": "co-run.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587212805821:android:92a9af15ae6305f721c9d4",
+        "android_client_info": {
+          "package_name": "com.example.co_run"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587212805821-eh7hefrjnhf5l7fmre35tmqh56e73ted.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-sQSwc3Byc97a_sdrbVYn1a5jNXHJ_A4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587212805821-eh7hefrjnhf5l7fmre35tmqh56e73ted.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

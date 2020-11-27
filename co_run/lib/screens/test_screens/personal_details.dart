@@ -6,6 +6,8 @@ import 'package:co_run/components/upload_pdf.dart';
 import 'package:co_run/themes/themes.dart';
 import 'package:flutter/material.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class PersonalDetails extends StatefulWidget {
   @override
   _PersonalDetailsState createState() => _PersonalDetailsState();
@@ -34,10 +36,10 @@ class _PersonalDetailsState extends State<PersonalDetails> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Enter personal details',
-        style:MyTheme.h6(
-              themeColor: Colors.white,
-              fontWeight: FontWeight.normal),
+        title: Text(
+          'Enter personal details',
+          style: MyTheme.h6(
+              themeColor: Colors.white, fontWeight: FontWeight.normal),
         ),
       ),
       body: SingleChildScrollView(
@@ -137,17 +139,17 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   SizedBox(
                     width: 10.0,
                   ),
-                   adhaarFile == null
+                  adhaarFile == null
                       ? Text(
                           'Please upload Adhaar',
-                     style: MyTheme.h7(
-                       themeColor: Colors.red,
-                       fontWeight: FontWeight.w200,
-                     ),
+                          style: MyTheme.h7(
+                            themeColor: Colors.red,
+                            fontWeight: FontWeight.w200,
+                          ),
                         )
                       : FlatButton(
                           onPressed: () {
-                          print(adhaarFile.path);
+                            print(adhaarFile.path);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -175,7 +177,16 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                     //Todo :implement on validate function
                     print(name.text);
                     print(adhaarFile.path);
-
+                    Firestore.instance
+                        .collection('users/OImVF9WMsgbcSOcdSg4x/details')
+                        .add({
+                      'name': name.text,
+                      'email': email.text,
+                      'state': state.text,
+                      'city' : city.text,
+                      'pincode': pincode.text,
+                      'doorandland':doorAndLandmark.text,
+                    });
 
                   }
                 },
