@@ -1,5 +1,6 @@
 import 'package:co_run/router/navigation_service.dart';
 import 'package:co_run/router/routes.dart';
+import 'package:co_run/themes/themes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,6 @@ class _SplashScreenState extends State<SplashScreen> {
           () async {
         FirebaseUser user = await FirebaseAuth.instance.currentUser();
         if (user == null) {
-          print(user.uid);
           NavigationService.instance
               .pushReplacementNamed(context, Routes.authScreen);
         } else {
@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         child: Center(
-          child: Text('Welcome'),
+          child: Text('Welcome',style: MyTheme.h1(),),
         ),
       ),
     );

@@ -78,7 +78,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                 keyboardType: TextInputType.emailAddress,
                 labelText: 'adhaar no',
                 validationFunction: (value) {
-                  if (value.isEmpty|| value!=12) {
+                  if (value.isEmpty) {
                     return 'Please enter the valid adhaar';
                   }
                   return null;
@@ -206,9 +206,10 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                     await Firestore.instance
                         .collection('users/DlwhA4SMfP1vyDE5WImv/personal_details')
                         .document(uid)
-                        .setData({
+                        .updateData({
                       'designation':designation,
                       'name': name.text,
+                      'adhaarNumber':adhaar.text,
                        'state': state.text,
                        'city': city.text,
                        'pincode': pincode.text,
