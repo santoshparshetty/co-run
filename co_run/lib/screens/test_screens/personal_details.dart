@@ -3,24 +3,33 @@ import 'dart:io';
 import 'package:co_run/components/input_text_box/input_text_box.dart';
 import 'package:co_run/components/pdf_display.dart';
 import 'package:co_run/components/upload_pdf.dart';
+import 'package:co_run/router/navigation_service.dart';
+import 'package:co_run/router/routes.dart';
 import 'package:co_run/themes/themes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class PersonalDetails extends StatefulWidget {
+
+  final int designation;
+  //1-Job provider
+  //0-Job seeker
+  PersonalDetails({@required this.designation});
+
   @override
   _PersonalDetailsState createState() => _PersonalDetailsState();
 }
 
 class _PersonalDetailsState extends State<PersonalDetails> {
   TextEditingController name = TextEditingController();
-  TextEditingController email = TextEditingController();
   TextEditingController adhaar = TextEditingController();
   TextEditingController state = TextEditingController();
   TextEditingController city = TextEditingController();
   TextEditingController pincode = TextEditingController();
-  TextEditingController doorAndLandmark = TextEditingController();
+  TextEditingController address = TextEditingController();
   File adhaarFile;
 
   final _formKey = GlobalKey<FormState>();
@@ -33,6 +42,9 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   Widget build(BuildContext context) {
+    String designation;
+    designation = widget.designation==0?'JOBSEEKER':'JOBPROVIDER';
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -61,13 +73,13 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               ),
               InputTextBox(
                 isMarginRequired: true,
-                controller: email,
-                maxLength: 20,
+                controller: adhaar,
+                maxLength: 12,
                 keyboardType: TextInputType.emailAddress,
-                labelText: 'email',
+                labelText: 'adhaar no',
                 validationFunction: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter the valid email';
+                  if (value.isEmpty|| value!=12) {
+                    return 'Please enter the valid adhaar';
                   }
                   return null;
                 },
@@ -111,9 +123,9 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               ),
               InputTextBox(
                 isMarginRequired: true,
-                controller: doorAndLandmark,
+                controller: address,
                 maxLength: 70,
-                labelText: 'Door no And Landmark',
+                labelText: 'address',
                 validationFunction: (value) {
                   if (value.isEmpty) {
                     return 'Please enter the valid landmark';
@@ -172,22 +184,39 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               ),
               RaisedButton(
                 child: Text('Submit'),
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState.validate() && adhaarFile != null) {
-                    //Todo :implement on validate function
                     print(name.text);
                     print(adhaarFile.path);
-                    Firestore.instance
-                        .collection('users/OImVF9WMsgbcSOcdSg4x/details')
-                        .add({
-                      'name': name.text,
-                      'email': email.text,
-                      'state': state.text,
-                      'city' : city.text,
-                      'pincode': pincode.text,
-                      'doorandland':doorAndLandmark.text,
-                    });
 
+                    final FirebaseAuth auth = FirebaseAuth.instance;
+                    final FirebaseUser user = await auth.currentUser();
+                    final uid = user.uid;
+                    print(uid);
+
+                    final ref = FirebaseStorage.instance
+                        .ref()
+                        .child('user_adhaar')
+                        .child(uid + '.pdf');
+
+                    await ref.putFile(adhaarFile).onComplete;
+                    final adhaarUrl = await ref.getDownloadURL();
+                    print(adhaarUrl);
+
+                    await Firestore.instance
+                        .collection('users/DlwhA4SMfP1vyDE5WImv/personal_details')
+                        .document(uid)
+                        .setData({
+                      'designation':designation,
+                      'name': name.text,
+                       'state': state.text,
+                       'city': city.text,
+                       'pincode': pincode.text,
+                       'address': address.text,
+                       'adhaarUrl' : adhaarUrl,
+                    });
+                    NavigationService.instance
+                        .pushReplacementNamed(context, Routes.start);
                   }
                 },
               ),

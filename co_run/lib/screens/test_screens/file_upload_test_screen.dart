@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:co_run/components/input_text_box/input_text_box.dart';
 import 'package:co_run/components/upload_pdf.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,4 @@
 import 'package:co_run/resources/strings.dart';
-import 'package:co_run/router/navigation_service.dart';
-import 'package:co_run/router/routes.dart';
 import 'package:flutter/material.dart';
 
 class Start extends StatefulWidget {
@@ -25,24 +23,12 @@ class _StartState extends State<Start> {
             padding: EdgeInsets.all(16),
             child: RaisedButton(
               onPressed: () {
-                NavigationService.instance.pushNamed(
-                  context,
-                  Routes.loginScreen,
-                );
+                // NavigationService.instance.pushNamed(
+                //   context,
+                //   Routes.personalDetails,
+                // );
               },
-              child: Text("notification"),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(16),
-            child: RaisedButton(
-              onPressed: () {
-                NavigationService.instance.pushNamed(
-                  context,
-                  Routes.personalDetails,
-                );
-              },
-              child: Text("personalDetails"),
+              child: Text("Welcome"),
             ),
           ),
         ],

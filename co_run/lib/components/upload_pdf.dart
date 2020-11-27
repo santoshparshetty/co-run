@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:co_run/components/pdf_display.dart';
 import 'package:co_run/themes/themes.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
