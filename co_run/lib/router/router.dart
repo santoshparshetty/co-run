@@ -2,6 +2,8 @@ import 'package:co_run/router/routes.dart';
 import 'package:co_run/screens/start.dart';
 import 'package:co_run/screens/test_screens/demo_screen.dart';
 import 'package:co_run/screens/test_screens/file_upload_test_screen.dart';
+import 'package:co_run/screens/test_screens/loginScreen.dart';
+import 'package:co_run/screens/test_screens/login_success_screen.dart';
 import 'package:co_run/screens/test_screens/personal_details.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +16,10 @@ class MyRouter {
         return MaterialPageRoute(builder: (_) => DemoScreen());
       case Routes.personalDetails:
         return MaterialPageRoute(builder: (_) => PersonalDetails());
-
+      case Routes.loginScreen:
+        return MaterialPageRoute(builder: (_) => LoginScreen());
+      case Routes.loginSuccessScreen:
+        return MaterialPageRoute(builder: (_) => LoginSuccessScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

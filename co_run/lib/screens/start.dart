@@ -27,7 +27,7 @@ class _StartState extends State<Start> {
               onPressed: () {
                 NavigationService.instance.pushNamed(
                   context,
-                  Routes.demoScreen,
+                  Routes.loginScreen,
                 );
               },
               child: Text("notification"),
