@@ -3,10 +3,8 @@ import 'dart:io';
 import 'package:co_run/components/input_text_box/input_text_box.dart';
 import 'package:co_run/components/pdf_display.dart';
 import 'package:co_run/components/upload_pdf.dart';
-import 'package:co_run/resources/colors.dart';
 import 'package:co_run/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:co_run/themes/themes.dart';
 
 class PersonalDetails extends StatefulWidget {
   @override
@@ -24,9 +22,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   File adhaarFile;
 
   final _formKey = GlobalKey<FormState>();
-
-
-
 
   void setFile(File document) {
     setState(() {
