@@ -5,5 +5,6 @@ class Routes {
   static const String personalDetails = '/personalDetails';
   static const String designationSelector = '/designationSelector';
   static const String professionalDetails = '/professionalDetails';
+  static const String homeScreen = '/homeScreen';
 
 }

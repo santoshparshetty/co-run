@@ -9,7 +9,7 @@ class UploadAdhaar extends StatefulWidget {
   final String iconName;
   final Function isFileUploaded;
 
-  UploadAdhaar({this.userID = 'abcd1234',this.iconName='Upload adhaar',this.isFileUploaded});
+  UploadAdhaar({this.userID = 'abcd1234',this.iconName='Upload Doc',this.isFileUploaded});
 
   @override
   _UploadAdhaarState createState() => _UploadAdhaarState();

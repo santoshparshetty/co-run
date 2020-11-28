@@ -320,8 +320,8 @@ class _JobRequirementScreenState extends State<JobRequirementScreen> {
                           'designation':'SEEKER',
                         });
 
-                        // NavigationService.instance
-                        //     .pushReplacementNamed(context, Routes.start);
+                        NavigationService.instance
+                            .pushReplacementNamed(context, Routes.homeScreen);
                       }
                     } else {
                       if (jobType == null ||
@@ -375,7 +375,7 @@ class _JobRequirementScreenState extends State<JobRequirementScreen> {
                           'designation':'PROVIDER',
                         });
                         NavigationService.instance
-                            .pushReplacementNamed(context, Routes.start);
+                            .pushReplacementNamed(context, Routes.homeScreen);
                       }
                     }
                   },

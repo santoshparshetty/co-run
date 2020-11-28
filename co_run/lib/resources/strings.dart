@@ -9,5 +9,5 @@ abstract class MyString {
   static String get enterDistrict => 'Enter your District name';
   static String get salaryOffered => 'Enter the salary offered in LPA';
   static String get companyName => 'companyName';
-
+  static String get homeScreen => 'Home Screen';
 }
