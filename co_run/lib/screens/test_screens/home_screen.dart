@@ -98,7 +98,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 getOption(
                   name: 'Requests',
                   icon: Icons.markunread_mailbox,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TestJob()),
+                    );
+                  },
                 ),
                 getOption(
                   name: 'Confirmed',
@@ -114,16 +119,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   name: 'Profile',
                   icon: Icons.person,
                   onPressed: () {},
-                ),
-                getOption(
-                  name: 'Accept/reject',
-                  icon: Icons.person,
-                  onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => TestJob()),
-                      );
-                    },
                 ),
               ],
             ),

@@ -72,29 +72,25 @@ class _RetrieveDataState extends State<RetrieveData> {
       location: 'Davanagere',
       company: 'abcd comp',
       salary: '3 LPA',
-    ));
-    widget.providerDetailList.add(providerDetails(
+    ));    widget.providerDetailList.add(providerDetails(
       state: 'Karnataka',
       jobtype: 'agriculture',
       location: 'Davanagere',
       company: 'abcd comp',
       salary: '3 LPA',
-    ));
-    widget.providerDetailList.add(providerDetails(
+    ));    widget.providerDetailList.add(providerDetails(
       state: 'Karnataka',
       jobtype: 'agriculture',
       location: 'Davanagere',
       company: 'abcd comp',
       salary: '3 LPA',
-    ));
-    widget.providerDetailList.add(providerDetails(
+    ));    widget.providerDetailList.add(providerDetails(
       state: 'Karnataka',
       jobtype: 'agriculture',
       location: 'Davanagere',
       company: 'abcd comp',
       salary: '3 LPA',
-    ));
-    widget.providerDetailList.add(providerDetails(
+    ));    widget.providerDetailList.add(providerDetails(
       state: 'Karnataka',
       jobtype: 'agriculture',
       location: 'Davanagere',
@@ -198,12 +194,9 @@ class _RequestsState extends State<Requests> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    MyNetworkImage(
-                      width: 80,
-                      height: 80,
-                      totalHeight: 80,
-                      totalWidth: 80,
-                      imageURL: widget.imageUrl,
+                    CircleAvatar(
+                      child: Icon(Icons.person_rounded),
+                      radius: 40.0,
                     ),
                     SizedBox(
                       width: 30,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const kcelebrationIcon=    Icon(Icons.celebration,color: Colors.pinkAccent,);
 const kTextStyle = TextStyle(color: Colors.black,fontSize: 22);
-const kCongratsText=TextStyle(color: Colors.green,fontSize: 34);
+const kCongratsText=TextStyle(color: Colors.green,fontSize: 25);
 
 class ConclusionPage extends StatefulWidget {
   @override
