@@ -3,18 +3,20 @@ import 'dart:io';
 import 'package:co_run/components/input_text_box/input_text_box.dart';
 import 'package:co_run/components/pdf_display.dart';
 import 'package:co_run/components/upload_pdf.dart';
+import 'package:co_run/constants/enums.dart';
 import 'package:co_run/router/navigation_service.dart';
 import 'package:co_run/router/routes.dart';
+import 'package:co_run/screens/test_screens/job_requirement.dart';
 import 'package:co_run/themes/themes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'bean/personal_details_bean.dart';
 
 class PersonalDetails extends StatefulWidget {
-
-  final int designation;
+  final Designation designation;
   //1-Job provider
   //0-Job seeker
   PersonalDetails({@required this.designation});
@@ -42,8 +44,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   Widget build(BuildContext context) {
-    String designation;
-    designation = widget.designation==0?'JOBSEEKER':'JOBPROVIDER';
 
     return Scaffold(
       appBar: AppBar(
@@ -203,21 +203,33 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                     final adhaarUrl = await ref.getDownloadURL();
                     print(adhaarUrl);
 
-                    await Firestore.instance
-                        .collection('users/DlwhA4SMfP1vyDE5WImv/personal_details')
-                        .document(uid)
-                        .updateData({
-                      'designation':designation,
-                      'name': name.text,
-                      'adhaarNumber':adhaar.text,
-                       'state': state.text,
-                       'city': city.text,
-                       'pincode': pincode.text,
-                       'address': address.text,
-                       'adhaarUrl' : adhaarUrl,
-                    });
-                    NavigationService.instance
-                        .pushReplacementNamed(context, Routes.professionalDetails);
+                    //   await Firestore.instance
+                    //       .collection('users/DlwhA4SMfP1vyDE5WImv/personal_details')
+                    //       .document(uid)
+                    //       .updateData({
+                    //     'designation':designation,
+                    //     'name': name.text,
+                    //     'adhaarNumber':adhaar.text,
+                    //      'state': state.text,
+                    //      'city': city.text,
+                    //      'pincode': pincode.text,
+                    //      'address': address.text,
+                    //      'adhaarUrl' : adhaarUrl,
+                    //   });
+                    PersonalDetailsBean bean = PersonalDetailsBean(
+                      name: name.text,
+                      adhaar: adhaar.text,
+                      address: adhaar.text,
+                      adhaarURL: adhaarUrl,
+                      city: city.text,
+                      pincode: pincode.text,
+                      state: state.text,
+                    );
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => JobRequirementScreen(designation: widget.designation , bean: bean)),
+                    );
                   }
                 },
               ),

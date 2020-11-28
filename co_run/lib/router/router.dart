@@ -18,8 +18,8 @@ class MyRouter {
         return MaterialPageRoute(builder: (_) => AuthScreen());
       case Routes.designationSelector:
         return MaterialPageRoute(builder: (_) => DesignationSelector());
-      case Routes.professionalDetails:
-        return MaterialPageRoute(builder: (_) => JobRequirementScreen());
+      // case Routes.professionalDetails:
+      //   return MaterialPageRoute(builder: (_) => JobRequirementScreen());
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => HomeScreen());
       //TODO : implement professional details screen

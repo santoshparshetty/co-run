@@ -1,3 +1,4 @@
+import 'package:co_run/constants/enums.dart';
 import 'package:co_run/screens/test_screens/personal_details.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,7 @@ class _DesignationSelectorState extends State<DesignationSelector> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => PersonalDetails(
-                            designation: 0,
+                            designation: Designation.SEEKER,
                           ),
                         ),
                       );
@@ -62,7 +63,7 @@ class _DesignationSelectorState extends State<DesignationSelector> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                PersonalDetails(designation: 1)),
+                                PersonalDetails(designation: Designation.PROVIDER)),
                       );
                     },
                     child: Text(

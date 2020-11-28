@@ -33,10 +33,6 @@ class _UploadAdhaarState extends State<UploadAdhaar> {
               print(file.path);
             }
             if (file != null) {
-              NotesUploadBean bean = NotesUploadBean(
-                fileName: widget.userID + '.pdf',
-                file: file,
-              );
               widget.isFileUploaded(file);
               // TODO 1 : Upload to firebase here
             }

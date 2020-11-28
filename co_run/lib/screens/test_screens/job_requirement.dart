@@ -8,25 +8,24 @@ import 'package:co_run/resources/colors.dart';
 import 'package:co_run/resources/strings.dart';
 import 'package:co_run/router/navigation_service.dart';
 import 'package:co_run/router/routes.dart';
+import 'package:co_run/screens/test_screens/bean/personal_details_bean.dart';
 import 'package:co_run/themes/themes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class JobRequirementScreen extends StatefulWidget {
-  final Designation designation = Designation.SEEKER;
+  final Designation designation;
+  final PersonalDetailsBean bean;
 
-  // JobRequirementScreen({@required this.designation});
+  JobRequirementScreen({@required this.designation, @required this.bean});
 
   @override
   _JobRequirementScreenState createState() => _JobRequirementScreenState();
 }
 
 class _JobRequirementScreenState extends State<JobRequirementScreen> {
-
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   String jobType;
@@ -294,7 +293,6 @@ class _JobRequirementScreenState extends State<JobRequirementScreen> {
                           ),
                         );
                       } else {
-
                         final FirebaseUser user = await _auth.currentUser();
                         final uid = user.uid;
                         print(uid);
@@ -308,16 +306,22 @@ class _JobRequirementScreenState extends State<JobRequirementScreen> {
                         print(docURL);
                         await Firestore.instance
                             .collection(
-                                'users/D6mKIrSGKyPCc8FsZgTv/professional/BcJQhVimyrOuLN2XNei6/${jobType.toLowerCase()}')
+                                'users/TV5yS59TTRUfkkmb0IN1/${jobType.toLowerCase()}')
                             .document(uid)
                             .setData({
+                          'name': widget.bean.name,
+                          'state': widget.bean.state,
+                          'pincode': widget.bean.pincode,
+                          'city': widget.bean.city,
+                          'adhaar': widget.bean.adhaar,
+                          'address': widget.bean.address,
+                          'adhaarURL': widget.bean.adhaarURL,
                           'jobType': jobType,
                           'age': age,
                           'experience': experience,
-                          'state': state,
                           'districtController': _districtController.text,
                           'resume_link': docURL,
-                          'designation':'SEEKER',
+                          'designation': 'SEEKER',
                         });
 
                         NavigationService.instance
@@ -359,20 +363,26 @@ class _JobRequirementScreenState extends State<JobRequirementScreen> {
                         final docURL = await ref.getDownloadURL();
                         print(docURL);
 
-
                         await Firestore.instance
-                            .collection('users/D6mKIrSGKyPCc8FsZgTv/professional/BcJQhVimyrOuLN2XNei6/${jobType.toLowerCase()}')
+                            .collection(
+                                'users/D6mKIrSGKyPCc8FsZgTv/professional/BcJQhVimyrOuLN2XNei6/${jobType.toLowerCase()}')
                             .document(uid)
                             .setData({
+                          'name': widget.bean.name,
+                          'state': widget.bean.state,
+                          'pincode': widget.bean.pincode,
+                          'city': widget.bean.city,
+                          'adhaar': widget.bean.adhaar,
+                          'address': widget.bean.address,
+                          'adhaarURL': widget.bean.adhaarURL,
                           'jobType': jobType,
                           'company_name': _companyName.text,
                           'age_required': age,
                           'experience': experience,
-                          'state': state,
                           'districtController': _districtController.text,
                           'salaryController': _salaryController.text,
                           'company_detail': docURL,
-                          'designation':'PROVIDER',
+                          'designation': 'PROVIDER',
                         });
                         NavigationService.instance
                             .pushReplacementNamed(context, Routes.homeScreen);
