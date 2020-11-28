@@ -8,23 +8,106 @@ import 'package:co_run/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class RetrieveData extends StatefulWidget {
-   String jobType ;
-   String uid;
-   String designation;
+  List<seekerDetails> seekerDetailList = [];
+  List<providerDetails> providerDetailList = [];
 
-   RetrieveData({this.jobType, this.uid, this.designation});
+  String jobType;
+  String uid;
+  String designation;
+
+  RetrieveData({this.jobType, this.uid, this.designation});
 
   @override
   _RetrieveDataState createState() => _RetrieveDataState();
 }
 
 class _RetrieveDataState extends State<RetrieveData> {
-
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
+    widget.seekerDetailList.add(seekerDetails(
+      name: 'Anoop',
+      location: 'Davanagere',
+      jobtype: 'agriculture',
+      experience: '0-2',
+      age: '28',
+      state: 'karnataka',
+    ));
+    widget.seekerDetailList.add(seekerDetails(
+      name: 'Swaroop',
+      location: 'Tumakuru',
+      jobtype: 'agriculture',
+      experience: '0-2',
+      age: '35',
+      state: 'karnataka',
+    ));
+    widget.seekerDetailList.add(seekerDetails(
+      name: 'Santosh',
+      location: 'bidar',
+      jobtype: 'cooking',
+      experience: '0-2',
+      age: '22',
+      state: 'karnataka',
+    ));
+    widget.seekerDetailList.add(seekerDetails(
+      name: 'John',
+      location: 'Davanagere',
+      jobtype: 'agriculture',
+      experience: '0-3',
+      age: '27',
+      state: 'karnataka',
+    ));
+
+    widget.seekerDetailList.add(seekerDetails(
+      name: 'Johny',
+      location: 'Banglore',
+      jobtype: 'agriculture',
+      experience: '0-3',
+      age: '28',
+      state: 'karnataka',
+    ));
+
+    widget.providerDetailList.add(providerDetails(
+      state: 'Karnataka',
+      jobtype: 'agriculture',
+      location: 'Davanagere',
+      company: 'abcd comp',
+      salary: '3 LPA',
+    ));
+    widget.providerDetailList.add(providerDetails(
+      state: 'Karnataka',
+      jobtype: 'agriculture',
+      location: 'Davanagere',
+      company: 'abcd comp',
+      salary: '3 LPA',
+    ));
+    widget.providerDetailList.add(providerDetails(
+      state: 'Karnataka',
+      jobtype: 'agriculture',
+      location: 'Davanagere',
+      company: 'abcd comp',
+      salary: '3 LPA',
+    ));
+    widget.providerDetailList.add(providerDetails(
+      state: 'Karnataka',
+      jobtype: 'agriculture',
+      location: 'Davanagere',
+      company: 'abcd comp',
+      salary: '3 LPA',
+    ));
+    widget.providerDetailList.add(providerDetails(
+      state: 'Karnataka',
+      jobtype: 'agriculture',
+      location: 'Davanagere',
+      company: 'abcd comp',
+      salary: '3 LPA',
+    ));
+
+    return Scaffold(
+      body: StreamBuilder(
         stream: Firestore.instance
-            .collection('users/TV5yS59TTRUfkkmb0IN1/${widget.jobType}').where("designation",isEqualTo: "SEEKER").snapshots(),
+            .collection('users/TV5yS59TTRUfkkmb0IN1/agriculture')
+            .where("designation", isEqualTo: 'SEEKER')
+            .snapshots(),
         builder: (ctx, userSnapshot) {
           if (userSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -32,33 +115,49 @@ class _RetrieveDataState extends State<RetrieveData> {
             );
           }
 
-          // seekerDetails bean = seekerDetails(
-          //   name: ,
-          // );
-
-
-
+          seekerDetails bean;
+          print(999);
           return ListView.builder(
-              itemCount: userSnapshot.data.documents.length,
-              itemBuilder: (ctx, index) =>
-                  Text(userSnapshot.data.documents[index]['name'].toString()));
-        });
+            itemCount: widget.seekerDetailList.length,
+            // itemCount: userSnapshot.data.documents.length,
+            itemBuilder: (ctx, index) {
+              print('1');
+              // print(userSnapshot);
+              // bean.name = userSnapshot.data.documents[index]['name'].toString();
+              // bean.state = userSnapshot.data.documents[index]['state'].toString();
+              // bean.age = userSnapshot.data.documents[index]['age'].toString();
+              // bean.experience =
+              //     userSnapshot.data.documents[index]['experience'].toString();
+              // bean.location =
+              //     userSnapshot.data.documents[index]['address'].toString();
+              // bean.jobtype =
+              //     userSnapshot.data.documents[index]['jobType'].toString();
+              //
+              // // widget.seekerDetailList.add(bean);
+              // print(bean.location);
+              return Requests(
+                designation: Designation.PROVIDER,
+                seekerDetailsBean: widget.seekerDetailList[index],
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 }
 
-
-
-
-
-
-
 class Requests extends StatefulWidget {
   Designation designation;
-  String imageUrl;
+  String imageUrl =
+      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FBarack_Obama&psig=AOvVaw0gtQV2rEriOevg8_QtXX6r&ust=1606649651941000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiz0MGSpe0CFQAAAAAdAAAAABAD';
+  seekerDetails seekerDetailsBean;
+  providerDetails providerDetailsBean;
 
   Requests({
     @required this.designation,
-    @required this.imageUrl,
+    this.seekerDetailsBean,
+    this.providerDetailsBean,
   });
 
   @override
@@ -114,7 +213,10 @@ class _RequestsState extends State<Requests> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: getDetails(widget.designation),
+                        children: getDetails(
+                          designation: widget.designation,
+                          seekerDetailsBean: widget.seekerDetailsBean,
+                        ),
                       ),
                     ),
                   ],
@@ -164,7 +266,11 @@ class _RequestsState extends State<Requests> {
   }
 }
 
-List<Widget> getDetails(Designation designation) {
+List<Widget> getDetails({
+  Designation designation,
+  seekerDetails seekerDetailsBean,
+  providerDetails providerDetailsBean,
+}) {
   List<Widget> texts = [];
   if (designation == Designation.SEEKER) {
     texts = [
@@ -196,41 +302,38 @@ List<Widget> getDetails(Designation designation) {
   } else {
     texts = [
       Text(
-        'Name: ',
+        'Name: ${seekerDetailsBean.name}',
         style: MyTheme.h6(),
       ),
       SizedBox(height: 5),
       Text(
-        'Industry: ',
+        'Industry: ${seekerDetailsBean.jobtype}',
         style: MyTheme.h6(),
       ),
       SizedBox(height: 5),
       Text(
-        'Age: ',
+        'Age: ${seekerDetailsBean.age}',
         style: MyTheme.h6(),
       ),
       SizedBox(height: 5),
       Text(
-        'State: ',
+        'State: ${seekerDetailsBean.state}',
         style: MyTheme.h6(),
       ),
       SizedBox(height: 5),
       Text(
-        'Location: ',
+        'Location:${seekerDetailsBean.location} ',
         style: MyTheme.h6(),
       ),
       SizedBox(height: 5),
       Text(
-        'Experience: ',
+        'Experience: ${seekerDetailsBean.experience}',
         style: MyTheme.h6(),
       ),
     ];
   }
   return texts;
 }
-
-
-
 
 Designation getDesignation(String name) {
   if (name == 'SEEKER')
@@ -239,7 +342,6 @@ Designation getDesignation(String name) {
     return Designation.PROVIDER;
 }
 
-
 class seekerDetails {
   String name;
   String jobtype;
@@ -247,14 +349,16 @@ class seekerDetails {
   String state;
   String location;
   String experience;
+  String imageURL;
 
   seekerDetails(
       {this.name,
-        this.jobtype,
-        this.age,
-        this.state,
-        this.location,
-        this.experience});
+      this.jobtype,
+      this.age,
+      this.state,
+      this.location,
+      this.experience,
+      this.imageURL});
 }
 
 class providerDetails {
@@ -263,7 +367,14 @@ class providerDetails {
   String state;
   String location;
   String salary;
+  String imageURL;
 
-  providerDetails(
-      {this.company, this.jobtype, this.state, this.location, this.salary});
+  providerDetails({
+    this.company,
+    this.jobtype,
+    this.state,
+    this.location,
+    this.salary,
+    this.imageURL,
+  });
 }

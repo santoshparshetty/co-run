@@ -2,10 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:co_run/components/requests_compo.dart';
 import 'package:co_run/resources/colors.dart';
 import 'package:co_run/resources/strings.dart';
+import 'package:co_run/screens/test_screens/testjob(1).dart';
 import 'package:co_run/themes/themes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+import 'conclusion_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -67,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     final FirebaseUser user = await auth.currentUser();
                     uid = user.uid;
                     uid = 'QsUOSmYt9CujIeOzcYBY';
+                    //'eO195crFi5ZAkjHArR9RULBIVF23';
                     await Firestore.instance
                         .collection('users/H7UmGyyf51BhTJmZbRP3/user_details')
                         .document('$uid')
@@ -99,12 +103,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 getOption(
                   name: 'Confirmed',
                   icon: Icons.check,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ConclusionPage()),
+                    );
+                  },
                 ),
                 getOption(
                   name: 'Profile',
                   icon: Icons.person,
                   onPressed: () {},
+                ),
+                getOption(
+                  name: 'Accept/reject',
+                  icon: Icons.person,
+                  onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TestJob()),
+                      );
+                    },
                 ),
               ],
             ),
