@@ -1,3 +1,4 @@
+import 'package:co_run/components/requests_compo.dart';
 import 'package:co_run/router/routes.dart';
 import 'package:co_run/screens/start.dart';
 import 'package:co_run/screens/test_screens/auth_screen.dart';
@@ -11,7 +12,7 @@ class MyRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.splash:
-        return MaterialPageRoute(builder: (_) => SplashScreen());
+        return MaterialPageRoute(builder: (_) => HomeScreen());
       case Routes.start:
         return MaterialPageRoute(builder: (_) => Start());
       case Routes.authScreen:

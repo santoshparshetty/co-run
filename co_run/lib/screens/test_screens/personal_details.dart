@@ -203,19 +203,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                     final adhaarUrl = await ref.getDownloadURL();
                     print(adhaarUrl);
 
-                    //   await Firestore.instance
-                    //       .collection('users/DlwhA4SMfP1vyDE5WImv/personal_details')
-                    //       .document(uid)
-                    //       .updateData({
-                    //     'designation':designation,
-                    //     'name': name.text,
-                    //     'adhaarNumber':adhaar.text,
-                    //      'state': state.text,
-                    //      'city': city.text,
-                    //      'pincode': pincode.text,
-                    //      'address': address.text,
-                    //      'adhaarUrl' : adhaarUrl,
-                    //   });
                     PersonalDetailsBean bean = PersonalDetailsBean(
                       name: name.text,
                       adhaar: adhaar.text,

@@ -323,6 +323,16 @@ class _JobRequirementScreenState extends State<JobRequirementScreen> {
                           'resume_link': docURL,
                           'designation': 'SEEKER',
                         });
+                        await Firestore.instance
+                            .collection('users/H7UmGyyf51BhTJmZbRP3/user_details')
+                            .document(uid)
+                            .updateData({
+                          'designation': 'SEEKER',
+                          'name': widget.bean.name,
+                          'state': widget.bean.state,
+                          'pincode': widget.bean.pincode,
+                          'jobType':jobType.toLowerCase(),
+                        });
 
                         NavigationService.instance
                             .pushReplacementNamed(context, Routes.homeScreen);
@@ -383,6 +393,16 @@ class _JobRequirementScreenState extends State<JobRequirementScreen> {
                           'salaryController': _salaryController.text,
                           'company_detail': docURL,
                           'designation': 'PROVIDER',
+                        });
+                        await Firestore.instance
+                            .collection('users/H7UmGyyf51BhTJmZbRP3/user_details')
+                            .document(uid)
+                            .updateData({
+                          'designation': 'PROVIDER',
+                          'name': widget.bean.name,
+                          'state': widget.bean.state,
+                          'pincode': widget.bean.pincode,
+                          'jobType':jobType.toLowerCase(),
                         });
                         NavigationService.instance
                             .pushReplacementNamed(context, Routes.homeScreen);

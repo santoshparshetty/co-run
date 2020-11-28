@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:co_run/components/requests_compo.dart';
 import 'package:co_run/resources/colors.dart';
 import 'package:co_run/resources/strings.dart';
 import 'package:co_run/themes/themes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -10,6 +13,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String uid;
+  String jobType;
+  String designation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +62,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 getOption(
                   name: 'Search',
                   icon: Icons.search,
-                  onPressed: () {},
+                  onPressed: () async {
+                    final FirebaseAuth auth = FirebaseAuth.instance;
+                    final FirebaseUser user = await auth.currentUser();
+                    uid = user.uid;
+                    uid = 'QsUOSmYt9CujIeOzcYBY';
+                    await Firestore.instance
+                        .collection('users/H7UmGyyf51BhTJmZbRP3/user_details')
+                        .document('$uid')
+                        .get()
+                        .then((DocumentSnapshot) {
+                      jobType = DocumentSnapshot.data['jobType'].toString();
+                      designation =
+                          DocumentSnapshot.data['designation'].toString();
+                      print(jobType);
+                      print(designation);
+                    });
+
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RetrieveData(
+                                designation: designation,
+                                jobType: jobType,
+                                uid: uid,
+                              )),
+                    );
+                  },
                 ),
                 getOption(
                   name: 'Requests',
