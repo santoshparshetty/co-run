@@ -60,7 +60,7 @@ class _AuthFormState extends State<AuthForm> {
       );
     }
     NavigationService.instance
-        .pushReplacementNamed(context, Routes.designationSelector);
+        .pushReplacementNamed(context, Routes.personalDetails);
   }
 
   @override

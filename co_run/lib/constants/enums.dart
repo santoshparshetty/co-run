@@ -1,0 +1,4 @@
+enum Designation {
+  PROVIDER,
+  SEEKER,
+}

@@ -2,6 +2,7 @@ import 'package:co_run/router/routes.dart';
 import 'package:co_run/screens/start.dart';
 import 'package:co_run/screens/test_screens/auth_screen.dart';
 import 'package:co_run/screens/test_screens/desg_selector.dart';
+import 'package:co_run/screens/test_screens/job_requirement.dart';
 import 'package:co_run/screens/test_screens/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class MyRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.splash:
-        return MaterialPageRoute(builder: (_) => SplashScreen());
+        return MaterialPageRoute(builder: (_) => JobRequirementScreen());
       case Routes.start:
         return MaterialPageRoute(builder: (_) => Start());
       case Routes.authScreen:
@@ -17,7 +18,7 @@ class MyRouter {
       case Routes.designationSelector:
         return MaterialPageRoute(builder: (_) => DesignationSelector());
         case Routes.professionalDetails:
-      return MaterialPageRoute(builder: (_) => Start());
+      return MaterialPageRoute(builder: (_) => JobRequirementScreen());
       //TODO : implement professional details screen
       // case Routes.personalDetails:
       //   return MaterialPageRoute(builder: (_) => PersonalDetails(designation: ,));

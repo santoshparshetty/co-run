@@ -217,7 +217,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                        'adhaarUrl' : adhaarUrl,
                     });
                     NavigationService.instance
-                        .pushReplacementNamed(context, Routes.start);
+                        .pushReplacementNamed(context, Routes.professionalDetails);
                   }
                 },
               ),
