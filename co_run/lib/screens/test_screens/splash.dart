@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
               .pushReplacementNamed(context, Routes.authScreen);
         } else {
           NavigationService.instance
-              .pushReplacementNamed(context, Routes.start);
+              .pushReplacementNamed(context, Routes.homeScreen);
           // TODO: home screen
         }
       },
