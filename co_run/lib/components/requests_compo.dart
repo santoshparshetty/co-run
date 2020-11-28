@@ -32,12 +32,16 @@ class _RetrieveDataState extends State<RetrieveData> {
             );
           }
 
+          // seekerDetails bean = seekerDetails(
+          //   name: ,
+          // );
+
 
 
           return ListView.builder(
               itemCount: userSnapshot.data.documents.length,
-              itemBuilder: (ctx, index) {
-                 return  Text(userSnapshot.data.documents[index]['name'].toString());
+              itemBuilder: (ctx, index) =>
+                  Text(userSnapshot.data.documents[index]['name'].toString()));
         });
   }
 }
