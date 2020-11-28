@@ -46,7 +46,6 @@ class _AuthFormState extends State<AuthForm> {
           backgroundColor: Theme.of(context).errorColor,
         ),
       );
-
     }
 
     if (isValid) {
@@ -59,8 +58,11 @@ class _AuthFormState extends State<AuthForm> {
         context,
       );
     }
-    NavigationService.instance
-        .pushReplacementNamed(context, Routes.personalDetails);
+    _isLogin
+        ? NavigationService.instance
+            .pushReplacementNamed(context, Routes.homeScreen)
+        : NavigationService.instance
+            .pushReplacementNamed(context, Routes.personalDetails);
   }
 
   @override

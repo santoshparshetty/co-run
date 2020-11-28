@@ -36,8 +36,10 @@ class _DesignationSelectorState extends State<DesignationSelector> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                PersonalDetails(designation: 0)),
+                          builder: (context) => PersonalDetails(
+                            designation: 0,
+                          ),
+                        ),
                       );
                     },
                     child: Text(
