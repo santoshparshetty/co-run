@@ -14,7 +14,7 @@ class _DesignationSelectorState extends State<DesignationSelector> {
         backgroundColor: Colors.black38,
         title: Text('Choose your designation'),
       ),
-      backgroundColor: Colors.white30,
+      backgroundColor: Colors.white70,
       body: SafeArea(
         child: Center(
           child: Container(
@@ -26,6 +26,7 @@ class _DesignationSelectorState extends State<DesignationSelector> {
                 Container(
                   padding: const EdgeInsets.all(20.0),
                   child: RaisedButton(
+                    color: Colors.white,
                     padding: const EdgeInsets.all(20.0),
                     disabledColor: Colors.lightBlueAccent,
                     disabledTextColor: Colors.black,
@@ -40,7 +41,7 @@ class _DesignationSelectorState extends State<DesignationSelector> {
                       );
                     },
                     child: Text(
-                      'job seeker',
+                      'Job seeker',
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
@@ -48,6 +49,7 @@ class _DesignationSelectorState extends State<DesignationSelector> {
                 Container(
                   padding: const EdgeInsets.all(20.0),
                   child: RaisedButton(
+                    color: Colors.white,
                     padding: const EdgeInsets.all(20.0),
                     disabledColor: Colors.lightBlueAccent,
                     disabledTextColor: Colors.black,
@@ -62,7 +64,7 @@ class _DesignationSelectorState extends State<DesignationSelector> {
                       );
                     },
                     child: Text(
-                      "job provider",
+                      "Job provider",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),

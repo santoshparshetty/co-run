@@ -66,7 +66,8 @@ class _AuthFormState extends State<AuthForm> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Card(
+      child: Container(
+        color: Colors.white,
         margin: EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Padding(
